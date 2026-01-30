@@ -1,20 +1,16 @@
+// index.js
 const http = require('http');
-// api.js ফাইলটি রিকয়ার করা হলো (যদি পরে ব্যবহার করতে চান)
-const terabox = require('./api');
+const terabox = require('./api'); // নিশ্চিত করুন api.js ফাইলটি আছে
 
-const port = process.env.PORT || 3000;
-
-const server = http.createServer((req, res) => {
+module.exports = (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
+    
     const response = {
         status: 'Success',
         message: 'Terabox API Server is Running properly!',
         info: 'Use your logic here to interact with api.js'
     };
+    
     res.end(JSON.stringify(response));
-});
-
-server.listen(port, () => {
-    console.log(`Server running at port ${port}`);
-});
+};
